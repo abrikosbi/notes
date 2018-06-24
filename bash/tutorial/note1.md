@@ -33,7 +33,7 @@ mydir=$(pwd)
 #!/bin/bash
 
 var1=$(( 5 + 5 ))
-var2=$[ 4 + 4 ]
+var2=$[ 4 + 4 ] # deprecated
 echo $var1
 echo $var2
 ```
@@ -91,22 +91,6 @@ then
     echo "The user $user  is the current logged in user"
 fi
 ```
-Второй аргумент в двойных кавычках и знак сравнения нужно экранировать
-```bash
-#!/bin/bash
-
-val1=text
-val2="another text"
-if [ $val1 \> "$val2" ]
-then
-    echo "$val1 is greater than $val2"
-else
-    echo "$val1 is less than $val2"
-fi
-```
-Сортировка в `if [ $val1 \> $val2 ]` по ascii таблице
-
-Команда `sort`, в свою очередь, использует порядок сортировки, заданный в настройках системного языка.
 
 #### Проверки файлов
 | Выражение | Описание |
