@@ -3,7 +3,7 @@
 #### Основы работы с sed
 ```bash
 echo "This is a test" | sed 's/test/another test/'
-sed 's/test/another test' ./myfile
+sed 's/test/another test/' ./myfile
 ```
 
 #### Выполнение наборов команд при вызове sed
@@ -47,12 +47,26 @@ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2,$s/pattern/replacement/' 
 ```
 
 #### Удаление строк
-```bash
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2d'
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '1,3d' # со 1 по 3
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2,$d' # со 2 до конца
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/d' # по шаблону
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/,/3pattern/d' # по нескольким шаблонамecho "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/,/3pattern/d' # по нескольким шаблонам
+```console
+$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2d'
+1pattern
+3pattern
+4pattern
+
+$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '1,3d' # со 1 по 3
+4pattern
+
+$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2,$d' # со 2 до конца
+1pattern
+
+$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/d' # по шаблону
+1pattern
+3pattern
+4pattern
+
+$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/,/3pattern/d' # по нескольким шаблонам
+1pattern
+4pattern
 ```
 
 #### Вывод номеров строк
