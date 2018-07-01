@@ -156,21 +156,21 @@ BEGIN{
 
 #### Условный оператор
 ```bash
-echo "10\n15\n6\n33\n45" | awk '{if ($1 > 20) print $1}'
+echo -e "10\n15\n6\n33\n45" | awk '{if ($1 > 20) print $1}'
 
-echo "10\n15\n6\n33\n45" | awk '{
+echo -e "10\n15\n6\n33\n45" | awk '{
   if ($1 > 20) {
     x = $1 * 2
     print x
   }
 }'
 
-echo "10\n15\n6\n33\n45" | awk '{if ($1 > 20) print $1 * 2; else print $1 / 2}'
+echo -e "10\n15\n6\n33\n45" | awk '{if ($1 > 20) print $1 * 2; else print $1 / 2}'
 ```
 
 #### Цикл while
 ```bash
-echo "124 127 130\n112 142 135\n175 158 245" | awk '{
+echo -e "124 127 130\n112 142 135\n175 158 245" | awk '{
   total = 0
   i = 1
   while (i < 4) {
@@ -186,7 +186,7 @@ echo "124 127 130\n112 142 135\n175 158 245" | awk '{
 
 #### Цикл for
 ```bash
-echo "124 127 130\n112 142 135\n175 158 245" | awk '{
+echo -e "124 127 130\n112 142 135\n175 158 245" | awk '{
   total = 0
   for (i = 1; i < 4; i++) {
     total += $i
@@ -253,6 +253,6 @@ grep -v '^#' /etc/passwd | awk '
 
 #### Дополнительно
 ```bash
-echo "12 21\n-12 -21" | awk '$1 > 0 {print $2}' # вывести второе поле только если первое > 0
-echo "first 1\nsecond 2\third 3" | awk '/se/ {print $1}' # обработать строки соответствующие регекспу
+echo -e "12 21\n-12 -21" | awk '$1 > 0 {print $2}' # вывести второе поле только если первое > 0
+echo -e "first 1\nsecond 2\third 3" | awk '/se/ {print $1}' # обработать строки соответствующие регекспу
 ```

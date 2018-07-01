@@ -17,12 +17,12 @@ cat hosts | xargs -I{} ssh root@{} hostname
 mkdir xargstest
 cd xargstest
 mkdir dir1 dir2 dir3
-echo "one" > dir1/file1A
-echo "one\ntwo" > dir1/file1B
-echo "one\ntwo\nthree" > dir2/file2A
-echo "one\ntwo\nthree\nfour" > dir2/file2B
-echo "one\ntwo\nthree\nfour\nfive" > dir3/file3A
-echo "one\ntwo\nthree\nfour\nfive\nsix" > dir3/file3B
+echo -e "one" > dir1/file1A
+echo -e "one\ntwo" > dir1/file1B
+echo -e "one\ntwo\nthree" > dir2/file2A
+echo -e "one\ntwo\nthree\nfour" > dir2/file2B
+echo -e "one\ntwo\nthree\nfour\nfive" > dir3/file3A
+echo -e "one\ntwo\nthree\nfour\nfive\nsix" > dir3/file3B
 
 tree -if .
 ```

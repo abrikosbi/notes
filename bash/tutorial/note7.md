@@ -41,35 +41,35 @@ echo "This is a pattern pattern pattern" | sed 's!pattern!replacement!g'
 
 #### Выбор фрагментов текста для обработки
 ```bash
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2s/pattern/replacement/' 
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '1,3s/pattern/replacement/' # со 1 по 3
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2,$s/pattern/replacement/' # со 2 до конца
+echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed '2s/pattern/replacement/' 
+echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed '1,3s/pattern/replacement/' # со 1 по 3
+echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed '2,$s/pattern/replacement/' # со 2 до конца
 ```
 
 #### Удаление строк
 ```console
-$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2d'
+$ echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed '2d'
 1pattern
 3pattern
 4pattern
 
-$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '1,3d' # со 1 по 3
+$ echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed '1,3d' # со 1 по 3
 4pattern
 
-$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '2,$d' # со 2 до конца
+$ echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed '2,$d' # со 2 до конца
 1pattern
 
-$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/d' # по шаблону
+$ echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/d' # по шаблону
 1pattern
 3pattern
 4pattern
 
-$ echo "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/,/3pattern/d' # по нескольким шаблонам
+$ echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed '/2pattern/,/3pattern/d' # по нескольким шаблонам
 1pattern
 4pattern
 ```
 
 #### Вывод номеров строк
 ```bash
-echo "1pattern\n2pattern\n3pattern\n4pattern" | sed -n /2pattern/'='
+echo -e "1pattern\n2pattern\n3pattern\n4pattern" | sed -n /2pattern/'='
 ```
