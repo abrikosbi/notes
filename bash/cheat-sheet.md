@@ -275,3 +275,25 @@
 | swapon /dev/hda3 | активировать swap-пространство, расположенное на разделе hda3 |
 | swapon /dev/hda2 /dev/hdb3 | активировать swap-пространства, расположенные на разделах hda2 и hdb3 |
 [//]: # (TODO опробовать команды)
+
+
+### Создание резервных копий (backup)
+| Команда | Описание |
+| --- | --- |
+| dump -0aj -f /tmp/home0.bak /home | создать полную резервную копию директории /home в файл /tmp/home0.bak |
+| dump -1aj -f /tmp/home0.bak /home | создать инкрементальную резервную копию директории /home в файл /tmp/home0.bak |
+| restore -if /tmp/home0.bak | восстановить из резервной копии /tmp/home0.bak |
+| rsync -rogpav --delete /home /tmp | синхронизировать /tmp с /home |
+| rsync -rogpav -e ssh --delete /home ip_address:/tmp | синхронизировать через SSH-туннель |
+| rsync -az -e ssh --delete ip_addr:/home/public /home/local | синхронизировать локальную директорию с удалённой директорией через ssh-туннель со сжатием |
+| rsync -az -e ssh --delete /home/local ip_addr:/home/public | синхронизировать удалённую директорию с локальной директорией через ssh-туннель со сжатием |
+| dd bs=1M if=/dev/hda &#124; gzip &#124; ssh user@ip_addr 'dd of=hda.gz' | сделать "слепок" локального диска в файл на удалённом компьютере через ssh-туннель |
+| tar -Puf backup.tar /home/user | создать инкрементальную резервную копию директории '/home/user' в файл backup.tar с сохранением полномочий |
+| ( cd /tmp/local/ && tar c . ) &#124; ssh -C user@ip_addr 'cd /home/share/ && tar x -p' | копирование содержимого /tmp/local на удалённый компьютер через ssh-туннель в /home/share/ |
+| ( tar c /home ) &#124; ssh -C user@ip_addr 'cd /home/backup-home && tar x -p' | копирование содержимого /home на удалённый компьютер через ssh-туннель в /home/backup-home |
+| tar cf - . &#124; (cd /tmp/backup ; tar xf - ) | копирование одной директории в другую с сохранением полномочий и линков |
+| find /home/user1 -name '*.txt' &#124; xargs cp -av --target-directory=/home/backup/ --parents | поиск в /home/user1 всех файлов, имена которых оканчиваются на '.txt', и копирование их в другую директорию |
+| find /var/log -name '*.log' &#124; tar cv --files-from=- &#124; bzip2 > log.tar.bz2 | поиск в /var/log всех файлов, имена которых оканчиваются на '.log', и создание bzip-архива из них |
+| dd if=/dev/hda of=/dev/fd0 bs=512 count=1 | создать копию MBR (Master Boot Record) с /dev/hda на флоппи-диск |
+| dd if=/dev/fd0 of=/dev/hda bs=512 count=1 | восстановить MBR с флоппи-диска на /dev/hda |
+[//]: # (TODO опробовать команды)
