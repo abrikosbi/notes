@@ -10,3 +10,7 @@ ls -1 | while read oldname; do
 done
 
 # https://www.linux.org.ru/forum/admin/9731946#comment-9732397
+
+# выжимка
+# echo äïçï÷ïò | iconv -f utf-8 -t cp1252 | iconv -f koi8-r -t utf-8
+# echo "Êàêèå-òî êðàêîçÿáðû" | iconv -t latin1 | iconv -f cp1251 -t utf-8
