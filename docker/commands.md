@@ -30,3 +30,9 @@ Command | Description
 --- | ---
 docker build --help |
 docker build -t friendlyhello:newest . |
+
+
+### Docker machine
+Command | Description
+--- | ---
+docker-machine create --driver virtualbox --virtualbox-boot2docker-url /Users/koskiszz/.docker/machine/cache/v18.06.1-ce/boot2docker.iso myvm1 |
