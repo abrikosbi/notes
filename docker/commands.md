@@ -36,3 +36,24 @@ docker build -t friendlyhello:newest . |
 Command | Description
 --- | ---
 docker-machine create --driver virtualbox --virtualbox-boot2docker-url /Users/koskiszz/.docker/machine/cache/v18.06.1-ce/boot2docker.iso myvm1 |
+
+
+### Приемы
+> Note: Because Docker Desktop for Mac and Docker Desktop for Windows use a Linux VM, you need a Linux binary, rather than a Mac or Windows binary. You can use a Docker container to build it:
+```bash
+$ docker run --rm -it -v $PWD:/build ubuntu:16.04
+
+container# apt-get update && apt-get install build-essential
+container# cd /build
+container# gcc -o hello -static -nostartfiles hello.c
+```
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+Docker has the ability to build images by piping Dockerfile through stdin with a local or remote build context
+```bash
+echo -e 'FROM busybox\nRUN echo "hello world"' | docker build -
+# OR
+docker build -<<EOF
+FROM busybox
+RUN echo "hello world"
+EOF
+```
